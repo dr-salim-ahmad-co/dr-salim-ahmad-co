@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="custer_balance_report_wizard_view" model="ir.ui.view">
+        <field name="name">Customer Balance</field>
+        <field name="model">customer.balance</field>
+        <field name="arch" type="xml">
+            <form string="Customer Balance">
+                <group>
+                    <field name="city_ids" can_create="false" can_write="false" options="{'no_create': True}" widget="many2many_tags"/>
+                </group>
+                <group>
+                    <group>
+                        <field name="ason_date"/>
+                    </group>
+                </group>
+                <footer>
+                    <button name="action_customer_balance_print_report" type="object" string="Print" class="oe_highlight"/>
+                    <button name="" string="Export" class="oe_highlight"/>
+                    <button string="Cancel" class="btn btn-default" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="action_customer_balance_wizard_menu" model="ir.actions.act_window">
+        <field name="name">Customer Balance Report</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">customer.balance</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+    <menuitem
+            id="menu_customer_balance"
+            name="Customer Balance Report"
+            sequence="50"
+            parent="sale.menu_sale_report"
+            action="action_customer_balance_wizard_menu"
+            groups="sales_team.group_sale_manager"/>
+
+    <menuitem
+            id="menu_sales"
+            name="Sales"
+            sequence="40"
+            parent="sale.menu_sale_report"
+            action="sale.action_order_report_all"
+            groups="sales_team.group_sale_manager"/>
+</odoo>

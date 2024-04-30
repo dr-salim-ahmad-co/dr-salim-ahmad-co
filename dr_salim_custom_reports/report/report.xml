@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_customer_balance_rep" model="ir.actions.report">
+        <field name="name">Customer Balance Report</field>
+        <field name="model">customer.balance</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">dr_salim_custom_reports.customer_balance_report_tem</field>
+        <field name="report_file">dr_salim_custom_reports.customer_balance_report_tem</field>
+        <field name="binding_model_id" ref="model_customer_balance"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="action_regional_outstanding_report" model="ir.actions.report">
+        <field name="name">Regional Outstanding Report</field>
+        <field name="model">regional.outstanding</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">dr_salim_custom_reports.regional_outstanding_report_tem</field>
+        <field name="report_file">dr_salim_custom_reports.regional_outstanding_report_tem</field>
+        <field name="binding_model_id" ref="model_regional_outstanding"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="action_monthly_review_report" model="ir.actions.report">
+        <field name="name">Monthly Review Report</field>
+        <field name="model">monthly.review</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">dr_salim_custom_reports.monthly_review_report_tem</field>
+        <field name="report_file">dr_salim_custom_reports.monthly_review_report_tem</field>
+        <field name="binding_model_id" ref="model_monthly_review"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="action_customer_summary_report" model="ir.actions.report">
+        <field name="name">Customer Summary Report</field>
+        <field name="model">customer.summary</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">dr_salim_custom_reports.customer_summary_report_tem</field>
+        <field name="report_file">dr_salim_custom_reports.customer_summary_report_tem</field>
+        <field name="binding_model_id" ref="model_customer_summary"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="action_sale_report_report" model="ir.actions.report">
+        <field name="name">Sale Summary Report</field>
+        <field name="model">sale.summary</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">dr_salim_custom_reports.sale_summary_report_tem</field>
+        <field name="report_file">dr_salim_custom_reports.sale_summary_report_tem</field>
+        <field name="binding_model_id" ref="model_sale_summary"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="action_customer_review_report" model="ir.actions.report">
+        <field name="name">Customer Review Report</field>
+        <field name="model">customer.review</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">dr_salim_custom_reports.customer_review_report_tem</field>
+        <field name="report_file">dr_salim_custom_reports.customer_review_report_tem</field>
+        <field name="binding_model_id" ref="model_customer_review"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="action_product_summary_report" model="ir.actions.report">
+        <field name="name">Product Summary Report</field>
+        <field name="model">product.summary</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">dr_salim_custom_reports.product_summary_report_tem</field>
+        <field name="report_file">dr_salim_custom_reports.product_summary_report_tem</field>
+        <field name="binding_model_id" ref="model_product_summary"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="action_category_summary_report" model="ir.actions.report">
+        <field name="name">Category Summary Report</field>
+        <field name="model">category.summary</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">dr_salim_custom_reports.category_summary_report_tem</field>
+        <field name="report_file">dr_salim_custom_reports.category_summary_report_tem</field>
+        <field name="binding_model_id" ref="model_category_summary"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="action_sale_register_report" model="ir.actions.report">
+        <field name="name">Sale Register Report</field>
+        <field name="model">sale.register</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">dr_salim_custom_reports.sale_register_report_tem</field>
+        <field name="report_file">dr_salim_custom_reports.sale_register_report_tem</field>
+        <field name="binding_model_id" ref="model_sale_register"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="action_invoice_wise_summary_report" model="ir.actions.report">
+        <field name="name">Invoice Wise Summary Report</field>
+        <field name="model">invoice.wise.summary</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">dr_salim_custom_reports.invoice_wise_summary_report_tem</field>
+        <field name="report_file">dr_salim_custom_reports.invoice_wise_summary_report_tem</field>
+        <field name="binding_model_id" ref="model_invoice_wise_summary"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="action_top_least_selling_product_report" model="ir.actions.report">
+        <field name="name">Top\Least Selling Product Report</field>
+        <field name="model">top.selling</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">dr_salim_custom_reports.top_least_selling_product_report_tem</field>
+        <field name="report_file">dr_salim_custom_reports.top_least_selling_product_report_tem</field>
+        <field name="binding_model_id" ref="model_top_selling"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="stock_report_xlsx" model="ir.actions.report">
+        <field name="name">Stock Report</field>
+        <field name="model">ms.stock.report</field>
+        <field name="report_type">xlsx</field>
+        <field name="report_name">dr_salim_custom_reports.stock_report_xls</field>
+        <field name="report_file">dr_salim_custom_reports.stock_report_xls</field>
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="stock_summary_report_xlsx" model="ir.actions.report">
+        <field name="name">Stock Summary Report</field>
+        <field name="model">ms.report.stocksum</field>
+        <field name="report_type">xlsx</field>
+        <field name="report_name">dr_salim_custom_reports.stock_summary_report_xls</field>
+        <field name="report_file">dr_salim_custom_reports.stock_summary_report_xls</field>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="customer_balance_report_tem">
+        <t t-call="web.html_container">
+            <t t-call="dr_salim_custom_reports.customer_balance_report"/>
+        </t>
+    </template>
+
+    <template id="regional_outstanding_report_tem">
+        <t t-call="web.html_container">
+            <t t-call="dr_salim_custom_reports.regional_outstanding_report"/>
+        </t>
+    </template>
+
+    <template id="monthly_review_report_tem">
+        <t t-call="web.html_container">
+            <t t-call="dr_salim_custom_reports.monthly_review_report"/>
+        </t>
+    </template>
+
+    <template id="customer_summary_report_tem">
+        <t t-call="web.html_container">
+            <t t-call="dr_salim_custom_reports.customer_summary_report_template"/>
+        </t>
+    </template>
+
+    <template id="sale_summary_report_tem">
+        <t t-call="web.html_container">
+            <t t-call="dr_salim_custom_reports.sale_summary_report_template"/>
+        </t>
+    </template>
+
+    <template id="customer_review_report_tem">
+        <t t-call="web.html_container">
+            <t t-call="dr_salim_custom_reports.customer_review_report_template"/>
+        </t>
+    </template>
+
+    <template id="product_summary_report_tem">
+        <t t-call="web.html_container">
+            <t t-call="dr_salim_custom_reports.product_summary_report_template"/>
+        </t>
+    </template>
+
+    <template id="category_summary_report_tem">
+        <t t-call="web.html_container">
+            <t t-call="dr_salim_custom_reports.category_summary_report_template"/>
+        </t>
+    </template>
+
+    <template id="sale_register_report_tem">
+        <t t-call="web.html_container">
+            <t t-call="dr_salim_custom_reports.sale_register_report_template"/>
+        </t>
+    </template>
+
+    <template id="invoice_wise_summary_report_tem">
+        <t t-call="web.html_container">
+            <t t-call="dr_salim_custom_reports.invoice_wise_summary_report_template"/>
+        </t>
+    </template>
+
+    <template id="top_least_selling_product_report_tem">
+        <t t-call="web.html_container">
+            <t t-call="dr_salim_custom_reports.top_least_selling_product_report_template"/>
+        </t>
+    </template>
+</odoo>

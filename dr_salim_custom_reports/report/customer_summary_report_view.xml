@@ -1,0 +1,97 @@
+<odoo>
+    <template id="customer_summary_report_template">
+        <div class="header">
+            <div class="text-center" style="border-bottom: 1px solid black; width:100%;">
+                <h5>
+                    <span style="font-size: 30px;">Customer Summary Report</span><br/>
+                    <span t-if="from_date" style="font-size: 15px;"><b>From:</b>
+                        <t t-esc="from_date"/> <b>To:</b> <t t-esc="to_date"/>
+                    </span>
+                </h5>
+            </div>
+        </div>
+        <div class="article o_report_layout_standard">
+            <table class="table table-bordered" style="width: 100%">
+                <thead style="border-bottom: 1px;">
+                    <tr>
+                        <th style="font-size: 11px; vertical-align: middle;">Customer</th>
+                        <th style="font-size: 11px; vertical-align: middle;">Tax Nature</th>
+                        <th style="font-size: 11px; vertical-align: middle;">Quantity</th>
+                        <th style="font-size: 11px; vertical-align: middle;">Gross Amount</th>
+                        <th style="font-size: 11px; vertical-align: middle;">Discount</th>
+                        <th style="font-size: 11px; vertical-align: middle;">Tax</th>
+                        <th style="font-size: 11px; vertical-align: middle;">Net Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <t t-foreach="customers" t-as="d">
+                        <tr>
+                            <td style="font-size: 11px; vertical-align: middle;">
+                                <t t-esc="d['customer']"/>
+                            </td>
+                            <td style="font-size: 11px; vertical-align: middle;">
+                                <t t-if="d['tax_nature']">
+                                    <t t-esc="d['tax_nature']"/>
+                                </t>
+                                <t t-else="">
+                                    -
+                                </t>
+                            </td>
+                            <td style="font-size: 11px; vertical-align: middle;">
+                                <t t-if="d['total_quantity']">
+                                    <t t-esc="'{:,.2f}'.format(d['total_quantity'])"/>
+                                </t>
+                                <t t-else="">
+                                    0
+                                </t>
+                            </td>
+                            <td style="font-size: 11px; vertical-align: middle;">
+                                <t t-if="d['total_amount']">
+                                    <t t-esc="'{:,.2f}'.format(d['total_amount'])"/>
+                                </t>
+                                <t t-else="">
+                                    0
+                                </t>
+                            </td>
+                            <td style="font-size: 11px; vertical-align: middle;">
+                                <t t-if="d['total_discount']">
+                                    <t t-esc="'{:,.2f}'.format(d['total_discount'])"/>
+                                </t>
+                                <t t-else="">
+                                    0
+                                </t>
+                            </td>
+                            <td style="font-size: 11px; vertical-align: middle;">
+                                <t t-if="d['total_tax']">
+                                    <t t-esc="'{:,.2f}'.format(d['total_tax'])"/>
+                                </t>
+                                <t t-else="">
+                                    0
+                                </t>
+                            </td>
+                            <td style="font-size: 11px; vertical-align: middle;">
+                                <t t-if="d['total_net_amount']">
+                                    <t t-esc="'{:,.2f}'.format(d['total_net_amount'])"/>
+                                </t>
+                                <t t-else="">
+                                    0
+                                </t>
+                            </td>
+                        </tr>
+                    </t>
+                </tbody>
+            </table>
+        </div>
+        <div class="footer o_standard_footer">
+            <div class="text-center" style="border-top: 1px solid black; width: 100%">
+                <p>page:
+                    <b/>
+                    <span class="page"/>
+                    /
+                    <b/>
+                    <span class="topage"/>
+                </p>
+            </div>
+        </div>
+    </template>
+</odoo>

@@ -1,0 +1,58 @@
+<odoo>
+    <template id="top_least_selling_product_report_template">
+        <div class="header">
+            <div class="text-center" style="border-bottom: 1px solid black; width:100%;">
+                <h5>
+                    <t t-if="least_selling != True">
+                        <span style="font-size: 30px;">Top Selling Product</span>
+                    </t>
+                    <t t-else="">
+                        <span style="font-size: 30px;">Least Selling Product</span>
+                    </t>
+                </h5>
+            </div>
+        </div>
+        <div class="article o_report_layout_standard">
+            <table class="table table-bordered" style="width: 100%">
+                <thead style="border-bottom: 1px;">
+                    <tr>
+                        <th style="font-size: 11px; vertical-align: middle;">product</th>
+                        <th style="font-size: 11px; vertical-align: middle;">Quantity</th>
+                        <th style="font-size: 11px; vertical-align: middle;">Units</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <t t-foreach="products" t-as="d">
+                        <tr>
+                            <td style="font-size: 11px; vertical-align: middle;">
+                                <t t-esc="d['product']"/>
+                            </td>
+                            <td style="font-size: 11px; vertical-align: middle;">
+                                <t t-if="d['quantity']">
+                                    <t t-esc="d['quantity']"/>
+                                </t>
+                                <t t-else="">
+                                    0
+                                </t>
+                            </td>
+                            <td style="font-size: 11px; vertical-align: middle;">
+                                <t t-esc="d['uom']"/>
+                            </td>
+                        </tr>
+                    </t>
+                </tbody>
+            </table>
+        </div>
+        <div class="footer o_standard_footer">
+            <div class="text-center" style="border-top: 1px solid black; width: 100%">
+                <p>page:
+                    <b/>
+                    <span class="page"/>
+                    /
+                    <b/>
+                    <span class="topage"/>
+                </p>
+            </div>
+        </div>
+    </template>
+</odoo>

@@ -1,0 +1,109 @@
+<odoo>
+    <template id="customer_balance_report">
+        <div class="header">
+            <div class="text-center" style="border-bottom: 1px solid black; width:100%;">
+                <h5>
+                    <span style="font-size: 30px;">Customer Balance Report</span>
+                    <span t-if="ason_date" style="font-size: 15px;">As On:
+                        <t t-esc="ason_date"/>
+                    </span>
+                </h5>
+            </div>
+        </div>
+        <div class="article o_report_layout_standard">
+            <table class="table table-bordered" style="width: 100%">
+                <thead style="border-bottom: 1px;">
+                    <tr>
+                        <th style="font-size: 11px; vertical-align: middle;">Customer</th>
+                        <th style="font-size: 11px; vertical-align: middle;">Balance</th>
+                        <th style="font-size: 11px; vertical-align: middle;">Advance</th>
+                        <th style="font-size: 11px; vertical-align: middle;">Contact</th>
+                        <th style="font-size: 11px; vertical-align: middle;">City</th>
+                        <th style="font-size: 11px; vertical-align: middle;">Address</th>
+                        <th style="font-size: 11px; vertical-align: middle;">Last Sale Date</th>
+                        <th style="font-size: 11px; vertical-align: middle;">Last Sale Amount</th>
+                        <th style="font-size: 11px; vertical-align: middle;">Last payment Date</th>
+                        <th style="font-size: 11px; vertical-align: middle;">Last payment Rec</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <t t-foreach="orders" t-as="d">
+                        <tr>
+                            <td style="font-size: 11px; vertical-align: middle;">
+                                <t t-esc="d['customer']"/>
+                            </td>
+                            <td style="font-size: 11px; vertical-align: middle;">
+                                <t t-if="d['balance']">
+                                    <t t-esc="'{:,.2f}'.format(d['balance'])"/>
+                                </t>
+                                <t t-else="">
+                                    0
+                                </t>
+                            </td>
+                            <td style="font-size: 11px; vertical-align: middle;">
+                                <t t-if="d['advance']">
+                                    <t t-esc="'{:,.2f}'.format(d['advance'])"/>
+                                </t>
+                                <t t-else="">
+                                    0
+                                </t>
+                            </td>
+                            <td style="font-size: 11px; vertical-align: middle;"><t t-esc="d['contact']"/>,
+                            </td>
+                            <td style="font-size: 11px; vertical-align: middle;">
+                                <t t-esc="d['city']"/>
+                            </td>
+                            <td style="font-size: 11px; vertical-align: middle;"><t t-esc="d['address']"/>,
+                                <t t-esc="d['city']"/>,
+                                <t t-esc="d['country']"/>
+                            </td>
+                            <td style="font-size: 11px; vertical-align: middle;">
+                                <t t-if="d['last_sale_date']">
+                                    <t t-esc="d['last_sale_date']"/>
+                                </t>
+                                <t t-if=" not d['last_sale_date']">
+                                    -
+                                </t>
+                            </td>
+                            <td style="font-size: 11px; vertical-align: middle;">
+                                <t t-if="d['last_sale_amount']">
+                                    <t t-esc="'{:,.2f}'.format(d['last_sale_amount'])"/>
+                                </t>
+                                <t t-else="">
+                                    0
+                                </t>
+                            </td>
+                            <td style="font-size: 11px; vertical-align: middle;">
+                                <t t-if="d['last_payment_date']">
+                                    <t t-esc="d['last_payment_date']"/>
+                                </t>
+                                <t t-if="not d['last_payment_date']">
+                                    -
+                                </t>
+                            </td>
+                            <td style="font-size: 11px; vertical-align: middle;">
+                                <t t-if="d['total_payment']">
+                                    <t t-esc="'{:,.2f}'.format(d['total_payment'])"/>
+                                </t>
+                                <t t-else="">
+                                    0
+                                </t>
+                            </td>
+                        </tr>
+                    </t>
+                </tbody>
+            </table>
+        </div>
+        <div class="footer o_standard_footer">
+            <div class="text-center" style="border-top: 1px solid black; width: 100%">
+                <p>page:
+                    <b/>
+                    <span class="page"/>
+                    /
+                    <b/>
+                    <span class="topage"/>
+                </p>
+            </div>
+        </div>
+    </template>
+</odoo>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="regional_outstanding_report_wizard_view" model="ir.ui.view">
+        <field name="name">Regional Outstanding</field>
+        <field name="model">regional.outstanding</field>
+        <field name="arch" type="xml">
+            <form string="Regional Outstanding" modifiers="{}">
+                <group modifiers="{}">
+                    <field name="city_ids" can_create="true" can_write="true" widget="many2many_tags"/>
+                </group>
+                <group>
+                    <group>
+                        <field name="from_date"/>
+                        <field name="to_date"/>
+                    </group>
+                </group>
+                <footer>
+                    <button name="action_regional_print_report" string="Print" type="object" class="oe_highlight"/>
+                    <button name="" string="Export" class="oe_highlight"/>
+                    <button string="Cancel" class="btn btn-default" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="action_regional_outstanding_wizard_menu" model="ir.actions.act_window">
+        <field name="name">Regional Outstanding Report</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">regional.outstanding</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+    <menuitem
+            id="menu_regional_outstanding"
+            name="Regional Outstanding Report"
+            sequence="60"
+            parent="sale.menu_sale_report"
+            action="action_regional_outstanding_wizard_menu"
+            groups="sales_team.group_sale_manager"/>
+</odoo>

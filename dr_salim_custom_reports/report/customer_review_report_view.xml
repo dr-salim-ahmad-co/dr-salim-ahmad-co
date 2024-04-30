@@ -1,0 +1,142 @@
+<odoo>
+    <template id="customer_review_report_template">
+        <div class="header">
+            <div class="text-center" style="border-bottom: 1px solid black; width:100%;">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <h5>
+                            <span style="font-size: 30px;">Customer Review Report -
+<!--                                <t t-esc="customer"/>-->
+                            </span>
+                        </h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <span t-if="from_date" style="font-size: 15px;">From:
+                            <t t-esc="from_date"/>
+                        </span>
+                        <span t-if="to_date" style="font-size: 15px;">To:
+                            <t t-esc="to_date"/>
+                        </span>
+                    </div>
+                </div>
+<!--                <div class="row">-->
+<!--                    <div class="col-12 text-center">-->
+<!--                        <span t-if="from_date" style="font-size: 15px;">Customer:-->
+<!--                            <t t-esc="customer"/>-->
+<!--                        </span>-->
+<!--                    </div>-->
+<!--                </div>-->
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <span t-if="from_date" style="font-size: 15px;">
+                            (<t t-esc="isunit"/>) Wise Report.
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="article o_report_layout_standard">
+            <table class="table table-bordered" style="width: 100%">
+                <thead style="border-bottom: 1px;">
+                    <tr>
+                        <th style="font-size: 11px; vertical-align: middle;">Customer</th>
+                        <th style="font-size: 11px; vertical-align: middle;">Net RNos</th>
+                        <th style="font-size: 11px; vertical-align: middle;">RNos</th>
+                        <th style="font-size: 11px; vertical-align: middle;">Dilution</th>
+                        <th style="font-size: 11px; vertical-align: middle;">MT</th>
+                        <th style="font-size: 11px; vertical-align: middle;">Misc</th>
+                        <th style="font-size: 11px; vertical-align: middle;">Tax</th>
+                        <th style="font-size: 11px; vertical-align: middle;">Total</th>
+                        <th style="font-size: 11px; vertical-align: middle;">Payment</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <t t-foreach="report_data" t-as="d">
+                        <tr>
+                            <td style="font-size: 11px; vertical-align: middle;">
+                                <t t-esc="d['customer']"/>
+                            </td>
+                            <td style="font-size: 11px; vertical-align: middle;">
+                                <t t-if="d['total_net_rnos']">
+                                    <t t-esc="'{:,.2f}'.format(d['total_net_rnos'])"/>
+                                </t>
+                                <t t-else="">
+                                    0
+                                </t>
+                            </td>
+                            <td style="font-size: 11px; vertical-align: middle;">
+                                <t t-if="d['total_rnos']">
+                                    <t t-esc="'{:,.2f}'.format(d['total_rnos'])"/>
+                                </t>
+                                <t t-else="">
+                                    0
+                                </t>
+                            </td>
+                            <td style="font-size: 11px; vertical-align: middle;">
+                                <t t-if="d['total_dilution']">
+                                    <t t-esc="'{:,.2f}'.format(d['total_dilution'])"/>
+                                </t>
+                                <t t-else="">
+                                    0
+                                </t>
+                            </td>
+                            <td style="font-size: 11px; vertical-align: middle;">
+                                <t t-if="d['total_mt']">
+                                    <t t-esc="'{:,.2f}'.format(d['total_mt'])"/>
+                                </t>
+                                <t t-else="">
+                                    0
+                                </t>
+                            </td>
+                            <td style="font-size: 11px; vertical-align: middle;">
+                                <t t-if="d['total_misc']">
+                                    <t t-esc="'{:,.2f}'.format(d['total_misc'])"/>
+                                </t>
+                                <t t-else="">
+                                    0
+                                </t>
+                            </td>
+                            <td style="font-size: 11px; vertical-align: middle;">
+                                <t t-if="d['total_tax']">
+                                    <t t-esc="'{:,.2f}'.format((d['total_tax']))"/>
+                                </t>
+                                <t t-else="">
+                                    0
+                                </t>
+                            </td>
+                            <td style="font-size: 11px; vertical-align: middle;">
+                                <t t-if="d['total_balance']">
+                                    <t t-esc="'{:,.2f}'.format((d['total_balance']))"/>
+                                </t>
+                                <t t-else="">
+                                    0
+                                </t>
+                            </td>
+                            <td style="font-size: 11px; vertical-align: middle;">
+                                <t t-if="d['total_payment']">
+                                    <t t-esc="'{:,.2f}'.format(d['total_payment'])"/>
+                                </t>
+                                <t t-else="">
+                                    0
+                                </t>
+                            </td>
+                        </tr>
+                    </t>
+                </tbody>
+            </table>
+        </div>
+        <div class="footer o_standard_footer">
+            <div class="text-center" style="border-top: 1px solid black; width: 100%">
+                <p>page:
+                    <b/>
+                    <span class="page"/>
+                    /
+                    <b/>
+                    <span class="topage"/>
+                </p>
+            </div>
+        </div>
+    </template>
+</odoo>

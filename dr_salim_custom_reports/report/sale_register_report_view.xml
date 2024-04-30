@@ -1,0 +1,147 @@
+<odoo>
+    <template id="sale_register_report_template">
+        <div class="header">
+            <div class="text-center" style="border-bottom: 1px solid black; width:100%;">
+                <h5>
+                    <span style="font-size: 30px;">Sale Register Report</span>
+                    <span t-if="from_date" style="font-size: 15px;"><b>From:</b>
+                        <t t-esc="from_date"/> <b>To:</b> <t t-esc="to_date"/>
+                    </span>
+                </h5>
+            </div>
+        </div>
+        <div class="article o_report_layout_standard">
+            <table class="table table-bordered" style="width: 100%">
+                <thead style="border-bottom: 1px;">
+                    <tr>
+                        <th style="font-size: 11px; vertical-align: middle;">Invoice No.</th>
+                        <th style="font-size: 11px; vertical-align: middle;">Invoice Date</th>
+                        <th style="font-size: 11px; vertical-align: middle;">Customer</th>
+                        <th style="font-size: 11px; vertical-align: middle;">product</th>
+                        <th style="font-size: 11px; vertical-align: middle;">Quantity</th>
+                        <th style="font-size: 11px; vertical-align: middle;">Rate</th>
+                        <th style="font-size: 11px; vertical-align: middle;">Gross Amount</th>
+                        <th style="font-size: 11px; vertical-align: middle;">Discount</th>
+                        <th style="font-size: 11px; vertical-align: middle;">Tax</th>
+                        <th style="font-size: 11px; vertical-align: middle;">Net Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <t t-foreach="products" t-as="d">
+                        <tr>
+                            <td style="font-size: 11px; vertical-align: middle;">
+                                <t t-esc="d['invoice_no']"/>
+                            </td>
+                            <td style="font-size: 11px; vertical-align: middle;">
+                                <t t-esc="d['invoice_date']"/>
+                            </td>
+                            <td style="font-size: 11px; vertical-align: middle;">
+                                <t t-esc="d['customer']"/>
+                            </td>
+                            <td style="font-size: 11px; vertical-align: middle;">
+                                <t t-esc="d['product_id']"/>
+                            </td>
+                            <td style="font-size: 11px; vertical-align: middle;">
+                                <t t-if="d['quantity']">
+                                    <t t-esc="d['quantity']"/>
+                                </t>
+                                <t t-else="">
+                                    0
+                                </t>
+                            </td>
+                            <td style="font-size: 11px; vertical-align: middle;">
+                                <t t-if="d['rate']">
+                                    <t t-esc="d['rate']"/>
+                                </t>
+                                <t t-else="">
+                                    0
+                                </t>
+                            </td>
+                            <td style="font-size: 11px; vertical-align: middle;">
+                                <t t-if="d['gross_amount']">
+                                    <t t-esc="'{:,.2f}'.format(d['gross_amount'])"/>
+                                </t>
+                                <t t-else="">
+                                    0
+                                </t>
+                            </td>
+                            <td style="font-size: 11px; vertical-align: middle;">
+                                <t t-if="d['total_discount']">
+                                    <t t-esc="'{:,.2f}'.format(d['total_discount'])"/>
+                                </t>
+                                <t t-else="">
+                                    0
+                                </t>
+                            </td>
+                            <td style="font-size: 11px; vertical-align: middle;">
+                                <t t-if="d['total_tax']">
+                                    <t t-esc="'{:,.2f}'.format(d['total_tax'])"/>
+                                </t>
+                                <t t-else="">
+                                    0
+                                </t>
+                            </td>
+                            <td style="font-size: 11px; vertical-align: middle;">
+                                <t t-if="d['total_net_amount']">
+                                    <t t-esc="'{:,.2f}'.format(d['total_net_amount'] + d['total_tax'])"/>
+                                </t>
+                                <t t-else="">
+                                    0
+                                </t>
+                            </td>
+                        </tr>
+                    </t>
+                    <tr>
+                        <td style="font-size: 11px; vertical-align: middle;">
+                            <strong>Total</strong>
+                        </td>
+                        <td style="font-size: 11px; vertical-align: middle;">
+                        </td>
+                        <td style="font-size: 11px; vertical-align: middle;">
+                        </td>
+                        <td style="font-size: 11px; vertical-align: middle;">
+                        </td>
+                        <td style="font-size: 11px; vertical-align: middle;">
+                            <strong>
+                                <t t-esc="'{:,.2f}'.format(sum(d['quantity'] for d in products))"/>
+                            </strong>
+                        </td>
+                        <td style="font-size: 11px; vertical-align: middle;">
+                        </td>
+                        <td style="font-size: 11px; vertical-align: middle;">
+                            <strong>
+                                <t t-esc="'{:,.2f}'.format(sum(d['gross_amount'] for d in products))"/>
+                            </strong>
+                        </td>
+                        <td style="font-size: 11px; vertical-align: middle;">
+                            <strong>
+                                <t t-esc="'{:,.2f}'.format(sum(d['total_discount'] for d in products))"/>
+                            </strong>
+                        </td>
+                        <td style="font-size: 11px; vertical-align: middle;">
+                            <strong>
+                                <t t-esc="'{:,.2f}'.format(sum(d['total_tax'] for d in products))"/>
+                            </strong>
+                        </td>
+                        <td style="font-size: 11px; vertical-align: middle;">
+                            <strong>
+                                <t t-esc="'{:,.2f}'.format(sum(d['total_net_amount'] for d in products))"/>
+                            </strong>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="footer o_standard_footer">
+            <div class="text-center" style="border-top: 1px solid black; width: 100%">
+                <p>page:
+                    <b/>
+                    <span class="page"/>
+                    /
+                    <b/>
+                    <span class="topage"/>
+                </p>
+            </div>
+        </div>
+    </template>
+</odoo>

@@ -1,0 +1,124 @@
+<odoo>
+    <template id="regional_outstanding_report">
+        <div class="header">
+            <div class="text-center" style="border-bottom: 1px solid black; width:100%;">
+                <h5>
+                    <span style="font-size: 30px;">Regional Outstanding Report</span>
+                    <span t-if="from_date" style="font-size: 15px;">From:
+                        <t t-esc="from_date"/>
+                    </span>
+                    <span t-if="to_date" style="font-size: 15px;">To:
+                        <t t-esc="to_date"/>
+                    </span>
+                </h5>
+            </div>
+        </div>
+        <div class="article o_report_layout_standard">
+            <table class="table table-bordered" style="width: 100%">
+                <thead style="border-bottom: 1px;">
+                    <tr>
+                        <th style="font-size: 11px; vertical-align: middle;">City</th>
+                        <th style="font-size: 11px; vertical-align: middle;">Opening Balance</th>
+                        <th style="font-size: 11px; vertical-align: middle;">Sales</th>
+                        <th style="font-size: 11px; vertical-align: middle;">S.Return</th>
+                        <th style="font-size: 11px; vertical-align: middle;">Receivings</th>
+                        <th style="font-size: 11px; vertical-align: middle;">Shipping</th>
+                        <th style="font-size: 11px; vertical-align: middle;">Insurance</th>
+                        <th style="font-size: 11px; vertical-align: middle;">Misc: Vouchers</th>
+                        <th style="font-size: 11px; vertical-align: middle;">Balance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <t t-foreach="orders" t-as="d">
+                        <tr>
+                            <td style="font-size: 11px; vertical-align: middle;">
+                                <t t-esc="d['city']"/>
+                            </td>
+                            <td style="font-size: 11px; vertical-align: middle;">
+                                <t t-esc="'{:,.2f}'.format(d['total_due'])"/>
+                            </td>
+                            <td style="font-size: 11px; vertical-align: middle;">
+                                <t t-esc="'{:,.2f}'.format(d['city_invoices_totals'])"/>
+                            </td>
+                            <td style="font-size: 11px; vertical-align: middle;">
+                                <t t-esc="'{:,.2f}'.format(d['refund_total_amount_invoices'])"/>
+                            </td>
+                            <td style="font-size: 11px; vertical-align: middle;">
+                                <t t-esc="'{:,.2f}'.format(d['total_invoice_payments'])"/>
+                            </td>
+                            <td style="font-size: 11px; vertical-align: middle;">
+                                <t t-esc="'{:,.2f}'.format(d['shipping_charges'])"/>
+                            </td>
+                            <td style="font-size: 11px; vertical-align: middle;">
+                                <t t-esc="'{:,.2f}'.format(d['insurance_charges'])"/>
+                            </td>
+                            <td style="font-size: 11px; vertical-align: middle;">
+                                <t t-esc="'{:,.2f}'.format(d['courier_charges'])"/>
+                            </td>
+                            <td style="font-size: 11px; vertical-align: middle;">
+                                <t t-esc="'{:,.2f}'.format(d['total_balance'])"/>
+                            </td>
+                        </tr>
+
+                    </t>
+                    <tr>
+                        <td style="font-size: 11px; vertical-align: middle;">
+                            <strong>Total</strong>
+                        </td>
+                        <td style="font-size: 11px; vertical-align: middle;">
+                            <strong>
+                                <t t-esc="'{:,.2f}'.format(sum(d['total_due'] for d in orders))"/>
+                            </strong>
+                        </td>
+                        <td style="font-size: 11px; vertical-align: middle;">
+                            <strong>
+                                <t t-esc="'{:,.2f}'.format(sum(d['city_invoices_totals'] for d in orders))"/>
+                            </strong>
+                        </td>
+                        <td style="font-size: 11px; vertical-align: middle;">
+                            <strong>
+                                <t t-esc="'{:,.2f}'.format(sum(d['refund_total_amount_invoices'] for d in orders))"/>
+                            </strong>
+                        </td>
+                        <td style="font-size: 11px; vertical-align: middle;">
+                            <strong>
+                                <t t-esc="'{:,.2f}'.format(sum(d['total_invoice_payments'] for d in orders))"/>
+                            </strong>
+                        </td>
+                        <td style="font-size: 11px; vertical-align: middle;">
+                            <strong>
+                                <t t-esc="'{:,.2f}'.format(sum(d['shipping_charges'] for d in orders))"/>
+                            </strong>
+                        </td>
+                        <td style="font-size: 11px; vertical-align: middle;">
+                            <strong>
+                                <t t-esc="'{:,.2f}'.format(sum(d['insurance_charges'] for d in orders))"/>
+                            </strong>
+                        </td>
+                        <td style="font-size: 11px; vertical-align: middle;">
+                            <strong>
+                                <t t-esc="'{:,.2f}'.format(sum(d['courier_charges'] for d in orders))"/>
+                            </strong>
+                        </td>
+                        <td style="font-size: 11px; vertical-align: middle;">
+                            <strong>
+                                <t t-esc="'{:,.2f}'.format(sum(d['total_balance'] for d in orders))"/>
+                            </strong>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="footer o_standard_footer">
+            <div class="text-center" style="border-top: 1px solid black; width: 100%">
+                <p>page:
+                    <b/>
+                    <span class="page"/>
+                    /
+                    <b/>
+                    <span class="topage"/>
+                </p>
+            </div>
+        </div>
+    </template>
+</odoo>

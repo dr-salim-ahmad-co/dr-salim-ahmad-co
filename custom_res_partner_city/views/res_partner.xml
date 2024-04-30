@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="res_partner_inherit" model="ir.ui.view">
+        <field name="name">res.partner.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='state_id']" position="before">
+                <field name="cities" placeholder="City2" options="{'no_create': True}" widget="Many2one"/>
+            </xpath>
+<!--            <xpath expr="//field[@name='city']" position="attributes">-->
+<!--                <attribute name="invisible">1</attribute>-->
+<!--            </xpath>-->
+        </field>
+    </record>
+
+    <record id="res_partner_inherit_tree" model="ir.ui.view">
+        <field name="name">res.partner.inherit.tree</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='state_id']" position="before">
+                <field name="cities" placeholder="City2" options="{'no_create': True}" widget="Many2one"/>
+            </xpath>
+<!--            <xpath expr="//field[@name='city']" position="attributes">-->
+<!--                <attribute name="invisible">1</attribute>-->
+<!--            </xpath>-->
+        </field>
+    </record>
+</odoo>

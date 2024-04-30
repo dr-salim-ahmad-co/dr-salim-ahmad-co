@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="stock_ledger_report_wizard_view" model="ir.ui.view">
+        <field name="name">Stock Ledger Report</field>
+        <field name="model">report.stockledger</field>
+        <field name="arch" type="xml">
+            <form string="Stock Ledger Report">
+                <group>
+                    <group>
+                        <field name="location_ids" can_create="true" can_write="true" widget="radio"/>
+                        <field name="products_ids" can_create="true" can_write="true" widget="many2many_tags"/>
+                    </group>
+                    <group>
+                        <field name="from_date"/>
+                        <field name="to_date"/>
+                    </group>
+                </group>
+                <footer>
+                    <button name="action_stock_ledger_report_print" type="object" string="Export"
+                            class="oe_highlight"/>
+                    <button string="Cancel" class="btn btn-default" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_stock_ledger_report_wizard_menu" model="ir.actions.act_window">
+        <field name="name">Stock Ledger Report</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">report.stockledger</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+    <menuitem
+            id="menu_stock_ledger_report"
+            name="Stock Ledger Report"
+            sequence="100"
+            parent="stock.menu_warehouse_report"
+            action="action_stock_ledger_report_wizard_menu"
+            />
+</odoo>

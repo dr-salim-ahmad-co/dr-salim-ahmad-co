@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="product_summary_report_wizard_view" model="ir.ui.view">
+        <field name="name">Product Summary</field>
+        <field name="model">product.summary</field>
+        <field name="arch" type="xml">
+            <form string="Product Summary">
+                <group>
+                    <field name="customer" can_create="true" can_write="true" widget="many2many_tags"/>
+                    <field name="city_ids" can_create="true" can_write="true" widget="many2one_tags"/>
+                    <field name="prod_cat_ids" can_create="true" can_write="true" widget="many2one_tags"/>
+                </group>
+                <group>
+                    <group>
+                        <field name="from_date"/>
+                        <field name="to_date"/>
+                    </group>
+                    <group>
+                        <field name="orderbyamount"/>
+                        <field name="orderbyqty"/>
+                    </group>
+                </group>
+                <footer>
+                    <button name="action_product_summary_print_report" type="object" string="Print"
+                            class="oe_highlight"/>
+                    <button name="" string="Export" class="oe_highlight"/>
+                    <button string="Cancel" class="btn btn-default" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_product_summary_wizard_menu" model="ir.actions.act_window">
+        <field name="name">Product Summary Report</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">product.summary</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+    <menuitem
+            id="menu_product_summary"
+            name="Product Summary Report"
+            sequence="110"
+            parent="sale.menu_sale_report"
+            action="action_product_summary_wizard_menu"
+            groups="sales_team.group_sale_manager"/>
+</odoo>

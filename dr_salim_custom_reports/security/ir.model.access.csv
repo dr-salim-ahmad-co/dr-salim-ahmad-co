@@ -1,0 +1,16 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_customer_balance,access.customer.balance,model_customer_balance,base.group_user,1,1,1,1
+access_customer_city,access.customer.city,model_customer_city,base.group_user,1,1,1,1
+access_regional_outstanding,access.regional.outstanding,model_regional_outstanding,base.group_user,1,1,1,1
+access_monthly_review,access.monthly.review,model_monthly_review,base.group_user,1,1,1,1
+access_customer_summary,access.customer.summary,model_customer_summary,base.group_user,1,1,1,1
+access_customer_review,access.customer.review,model_customer_review,base.group_user,1,1,1,1
+access_sale_summary,access.sale.summary,model_sale_summary,base.group_user,1,1,1,1
+access_product_summary,access.product.summary,model_product_summary,base.group_user,1,1,1,1
+access_category_summary,access.category.summary,model_category_summary,base.group_user,1,1,1,1
+access_sale_register,access.sale.register,model_sale_register,base.group_user,1,1,1,1
+access_invoice_wise_summary,access.invoice.wise.summary,model_invoice_wise_summary,base.group_user,1,1,1,1
+access_top_selling,access.top.selling,model_top_selling,base.group_user,1,1,1,1
+access_ms_stock_report,access.ms.stock.report,model_ms_stock_report,base.group_user,1,1,1,1
+access_ms_report_stocksum,access.ms.report.stocksum,model_ms_report_stocksum,base.group_user,1,1,1,1
+access_report_stockledger,access.report.stockledger,model_report_stockledger,base.group_user,1,1,1,1

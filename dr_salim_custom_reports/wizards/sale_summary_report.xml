@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="sale_summary_report_wizard_view" model="ir.ui.view">
+        <field name="name">Sale Summary</field>
+        <field name="model">sale.summary</field>
+        <field name="arch" type="xml">
+            <form string="Sae Summary">
+                <group>
+                    <group>
+                        <field name="from_date"/>
+                    </group>
+                    <group>
+                        <field name="to_date"/>
+                    </group>
+                </group>
+                <footer>
+                    <button name="action_sae_summary_print_report" type="object" string="Print"
+                            class="oe_highlight"/>
+                    <button name="" string="Export" class="oe_highlight"/>
+                    <button string="Cancel" class="btn btn-default" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_sale_summary_wizard_menu" model="ir.actions.act_window">
+        <field name="name">Sale Summary Report</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sale.summary</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+    <menuitem
+            id="menu_sale_summary"
+            name="Sale Summary Report"
+            sequence="90"
+            parent="sale.menu_sale_report"
+            action="action_sale_summary_wizard_menu"
+            groups="sales_team.group_sale_manager"/>
+</odoo>

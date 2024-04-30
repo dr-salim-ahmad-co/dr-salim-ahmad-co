@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="monthly_review_report_wizard_view" model="ir.ui.view">
+        <field name="name">Monthly Review</field>
+        <field name="model">monthly.review</field>
+        <field name="arch" type="xml">
+            <form string="Monthly Review">
+                <group>
+                    <field name="partner_ids" can_create="true" can_write="true"/>
+                </group>
+                <group>
+                    <group>
+                        <field name="from_date"/>
+                        <field name="to_date"/>
+                    </group>
+                </group>
+                <group>
+                    <field name="isunit"/>
+                </group>
+                <footer>
+                    <button name="action_monthly_print_report" string="Print" type="object" class="oe_highlight"/>
+                    <button name="" string="Export" class="oe_highlight"/>
+                    <button string="Cancel" class="btn btn-default" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="action_monthly_review_wizard_menu" model="ir.actions.act_window">
+        <field name="name">Monthly Review Report</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">monthly.review</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+    <menuitem
+            id="menu_monthly_review"
+            name="Monthly Review Report"
+            sequence="70"
+            parent="sale.menu_sale_report"
+            action="action_monthly_review_wizard_menu"
+            groups="sales_team.group_sale_manager"/>
+</odoo>
